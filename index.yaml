@@ -1,14 +1,14 @@
 apiVersion: v1
 entries:
-  ws-helm:
+  ws-backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-02T11:04:35.844614515Z"
+    created: "2025-01-02T11:06:20.402029675Z"
     description: A Helm chart for Kubernetes
-    digest: 055607e6ac25cc8a3eb8a7e12356f9bf84b5a47c19b3571244c7b8a290ae94e7
-    name: ws-helm
+    digest: bede925eaca1283b7822b72a65f8cb6cbe47c12fb6ec845cca99f0ee2c07423d
+    name: ws-backend
     type: application
     urls:
-    - ws-helm-0.1.0.tgz
+    - ws-backend-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-02T11:04:35.844284726Z"
+generated: "2025-01-02T11:06:20.401652965Z"
