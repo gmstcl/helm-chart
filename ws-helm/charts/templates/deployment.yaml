@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: backend
+    version: {{ .Values.backend.version }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: backend
+      version: {{ .Values.backend.version }}
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: {{ .Values.backend.version }}
+    spec:
+      containers:
+        - name: backend-container
+          image: {{ .Values.backend.image }}
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "{{ .Values.preStopSleep }}"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: frontend
+    version: {{ .Values.frontend.version }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: frontend
+      version: {{ .Values.frontend.version }}
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: {{ .Values.frontend.version }}
+    spec:
+      containers:
+        - name: frontend-container
+          image: {{ .Values.frontend.image }}
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "{{ .Values.preStopSleep }}"]
